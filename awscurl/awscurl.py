@@ -453,8 +453,8 @@ def inner_main(argv):
         if args.data_binary:
             with open(filename, "rb") as post_data_file:
                 data = post_data_file.read()
-        elif "Content-Type: application/json" in args.header:
-            with open(filename, "r", "UTF-8") as post_data_file:
+        elif "Content-Type: application/json" in args.header or "Content-Type: application/x-ndjson" in args.header:
+            with open(filename, "r", encoding="UTF-8") as post_data_file:
                 data = post_data_file.read()
         else:
             with open(filename, "r") as post_data_file:
